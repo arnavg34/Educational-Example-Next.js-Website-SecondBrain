@@ -1,24 +1,34 @@
-"use client"
-
+"use client";
 import { useState } from "react";
 
+export default function Chat() {
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState("");
 
+  const sendPrompt = async () => {
+    const res = await fetch("/api/ollama", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({prompt: "yes"}),
+    });
 
-export default function Home() {
-  const [count, setCount] = useState(0);
+    const data = await res.json();
+    setResponse(data.response);
 
-  const incrementCount = () => {
-    setCount(count + 1);
   };
+
   return (
-    <div className="h-screen flex justify-center items-center">
-      
-      <button className="bg-red-700 size-20 rounded-md" onClick={incrementCount}>
-        
-        <p className="text-lg">Click me:{count}</p>
-        
+    <div className="p-4">
+      <textarea
+        className="border p-2 w-full"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Type your prompt..."
+      />
+      <button onClick={sendPrompt} className="mt-2 p-2 bg-blue-500 text-white">
+        Send
       </button>
-      
+      <div className="mt-4 p-2 border">{response}</div>
     </div>
   );
 }
