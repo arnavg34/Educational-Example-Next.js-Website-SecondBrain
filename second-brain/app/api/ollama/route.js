@@ -10,14 +10,14 @@ export async function POST(req) {
         body: JSON.stringify({
           model: "llama3", 
           prompt,
-          
+          stream: false
         }),
       });
   
       const data = await response.json();
   
       return Response.json({ response: data.response });
-    } catch (error) {
+    } catch  {
       return Response.json({ error: "Failed to connect to Ollama" }, { status: 500 });
     }
   }

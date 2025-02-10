@@ -9,7 +9,7 @@ export default function Chat() {
     const res = await fetch("/api/ollama", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({prompt: "yes"}),
+      body: JSON.stringify({prompt}),
     });
 
     const data = await res.json();
