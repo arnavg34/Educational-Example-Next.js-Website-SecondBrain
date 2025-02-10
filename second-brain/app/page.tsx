@@ -20,12 +20,12 @@ export default function Chat() {
   return (
     <div className="p-4">
       <textarea
-        className="border p-2 w-full"
+        className="border p-2 w-full text-black"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Type your prompt..."
       />
-      <button onClick={sendPrompt} className="mt-2 p-2 bg-blue-500 text-white">
+      <button onClick={sendPrompt} className="mt-2 p-2 bg-blue-500 text-black">
         Send
       </button>
       <div className="mt-4 p-2 border">{response}</div>
