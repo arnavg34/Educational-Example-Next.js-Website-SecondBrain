@@ -14,7 +14,7 @@ export default function Chat() {
 
     const data = await res.json();
     setResponse(data.response);
-
+    console.log(data.response)
   };
 
   return (
