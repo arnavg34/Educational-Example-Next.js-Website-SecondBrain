@@ -1,4 +1,4 @@
-export async function POST(req) {
+export async function POST(req: any) {
     try {
       const { prompt } = await req.json();
   
